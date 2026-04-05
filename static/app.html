@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ViralizeAI — Repurpose Your Content</title>
+  <meta name="description" content="Transform your essays and reports into Twitter threads, LinkedIn posts, and Reel scripts instantly with ViralizeAI." />
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+</head>
+<body class="app-page">
+
+  <!-- Header -->
+  <header class="site-header">
+    <a href="/" class="logo-inline" id="header-logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M28 6L10 28H22L20 42L38 20H26L28 6Z" fill="#111111" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span>ViralizeAI</span>
+    </a>
+    <a href="/about" class="btn btn-outline" id="header-about" style="padding: 9px 20px; font-size: 0.85rem;">
+      About
+    </a>
+  </header>
+
+  <main>
+
+    <!-- Page heading -->
+    <div class="page-heading">
+      <h1>Repurpose your content</h1>
+      <p>Paste your essay below, pick a format, and let the AI do the work.</p>
+    </div>
+
+    <!-- Error toast -->
+    <div id="error-toast" class="error-toast" style="display:none;" role="alert" aria-live="assertive">
+      <span>⚠</span>
+      <span id="error-message"></span>
+    </div>
+
+    <!-- Input card -->
+    <div class="input-card">
+      <div class="input-card-header">
+        <span class="input-card-title">Your Content</span>
+        <span class="char-count" id="char-count">0 characters</span>
+      </div>
+      <textarea
+        id="content-input"
+        placeholder="Paste your essay, article, blog post, or report here…"
+        aria-label="Content input"
+        spellcheck="true"
+      ></textarea>
+    </div>
+
+    <!-- Format selector -->
+    <div class="format-selector-wrap">
+      <p class="section-title">Transform into</p>
+      <div class="format-selector" role="group" aria-label="Output format selection">
+
+        <button class="format-btn" id="fmt-twitter" data-format="twitter" aria-pressed="false">
+          <span class="format-btn-icon">𝕏</span>
+          <span class="format-btn-label">Twitter / X</span>
+          <span class="format-btn-sub">Thread</span>
+        </button>
+
+        <button class="format-btn" id="fmt-linkedin" data-format="linkedin" aria-pressed="false">
+          <span class="format-btn-icon">💼</span>
+          <span class="format-btn-label">LinkedIn</span>
+          <span class="format-btn-sub">Post</span>
+        </button>
+
+        <button class="format-btn" id="fmt-reel" data-format="reel" aria-pressed="false">
+          <span class="format-btn-icon">🎬</span>
+          <span class="format-btn-label">Reel</span>
+          <span class="format-btn-sub">30s Script</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Generate button -->
+    <div class="generate-wrap">
+      <button class="btn btn-primary" id="generate-btn" disabled>
+        Generate
+      </button>
+      <p class="generate-hint" id="generate-hint">Select a format above to get started</p>
+    </div>
+
+    <!-- Output section -->
+    <div class="output-section" id="output-section" aria-live="polite">
+
+      <div class="output-header">
+        <span class="output-title">Generated Content</span>
+        <span class="output-count" id="output-count"></span>
+      </div>
+
+      <!-- Loading card -->
+      <div class="loading-card" id="loading-card" style="display:none;">
+        <div class="loading-card-header">
+          <div class="spinner"></div>
+          <span style="font-size:0.82rem; font-weight:600; color:#6B6B6B;" id="loading-label">Generating…</span>
+        </div>
+        <div class="loading-card-body">
+          <div class="skeleton skel-line w-full"></div>
+          <div class="skeleton skel-line w-90"></div>
+          <div class="skeleton skel-line w-80"></div>
+          <div class="skeleton skel-line w-full"></div>
+          <div class="skeleton skel-line w-60"></div>
+          <div class="skeleton skel-line w-90"></div>
+          <div class="skeleton skel-line w-80"></div>
+        </div>
+      </div>
+
+      <!-- Carousel -->
+      <div class="carousel-wrap" id="carousel-wrap" style="display:none;">
+        <div class="carousel-viewport">
+          <div class="carousel-track" id="carousel-track"></div>
+        </div>
+
+        <div class="carousel-nav" id="carousel-nav">
+          <button class="carousel-arrow" id="prev-btn" aria-label="Previous card" disabled>&#8592;</button>
+          <div class="carousel-dots" id="dots-container"></div>
+          <button class="carousel-arrow" id="next-btn" aria-label="Next card" disabled>&#8594;</button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="/static/app.js"></script>
+  <script src="/static/cursor.js"></script>
+</body>
+</html>

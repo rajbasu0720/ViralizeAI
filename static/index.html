@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ViralizeAI — Turn Essays into Viral Content</title>
+  <meta name="description" content="ViralizeAI instantly transforms your long-form essays and reports into Twitter threads, LinkedIn posts, and Reel scripts using AI." />
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+</head>
+<body class="landing-page">
+
+  <!-- Dummy Preloader -->
+  <div class="global-preloader" id="preloader">
+    <div class="preloader-counter" id="preloader-counter">0%</div>
+    <div class="preloader-brand">ViralizeAI</div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const counterEl = document.getElementById("preloader-counter");
+      const preloaderEl = document.getElementById("preloader");
+      let currentProgress = 0;
+      
+      const updateLoader = setInterval(() => {
+        // Jump only 1 to 2 steps for a slower, smoother load
+        currentProgress += Math.floor(Math.random() * 2) + 1;
+        
+        if (currentProgress >= 100) {
+          currentProgress = 100;
+          clearInterval(updateLoader);
+          counterEl.textContent = currentProgress + "%";
+          
+          // Longer pause at 100% (800ms) then fade out
+          setTimeout(() => {
+            preloaderEl.classList.add("hidden");
+            setTimeout(() => preloaderEl.remove(), 800); // Remove from DOM after fade
+          }, 800);
+        } else {
+          counterEl.textContent = currentProgress + "%";
+        }
+      }, 35); // Slower interval (35ms instead of 18ms)
+    });
+  </script>
+
+  <div class="landing-wrapper">
+    <div class="landing-content">
+
+      <!-- Logo -->
+      <div class="landing-logo-wrap">
+        <div class="landing-logo-mark" aria-label="ViralizeAI logo">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M28 6L10 28H22L20 42L38 20H26L28 6Z" fill="#111111" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <h1 class="landing-title">Viralize<span>AI</span></h1>
+      <p class="landing-tagline">From essay to viral — in seconds.</p>
+      <p class="landing-desc">
+        Paste any long-form content and instantly get a Twitter/X thread,
+        LinkedIn post, or Reel script crafted by AI.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="landing-btns">
+        <a href="/about" class="btn btn-outline" id="about-btn">About</a>
+        <a href="/app" class="btn btn-primary" id="get-started-btn">Get Started →</a>
+      </div>
+
+      <!-- Badges -->
+      <div class="landing-badges">
+        <span class="badge"><span class="badge-dot"></span>Twitter / X Thread</span>
+        <span class="badge"><span class="badge-dot"></span>LinkedIn Post</span>
+        <span class="badge"><span class="badge-dot"></span>Reel Script</span>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="landing-footer-text">Powered by Gemini AI</p>
+
+  <script src="/static/cursor.js"></script>
+</body>
+</html>
